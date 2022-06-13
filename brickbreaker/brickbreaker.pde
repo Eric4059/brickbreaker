@@ -2,7 +2,9 @@
 
 int[] x; 
 int[] y;
+boolean[] alive;
 int brickd;
+int bd;
 
 
 int mode;
@@ -14,33 +16,58 @@ final int PAUSE = 4;
 final int OPTIONS = 5;
 final int GAME2 = 6;
 
+int n;
 
 
+float px, py; //paddle
+float bx, by, vx, vy; //ball
+
+boolean up, down, left, right, space;
+
+int tempx, tempy;
 
 
+void setup() {
 
-
-
-void setup(){
-  
-  size(800, 800);
+  size(800, 800, P2D);
   mode = INTRO;
-  
+  strokeWeight(5);
+  textAlign(CENTER, CENTER);
+  textSize(60);
+
+  bd = 20;
+
+  bx = 400;
+  by = 600; 
+
+  px = 400;
+  py = 800;
+
+  vx = random(3, 5);
+  vy = random(1, 5);
+
   brickd = 50;
-  x = new int[3];
-  y = new int[3];
-  
-  x[0] = 100;
-  y[0] = 100;
-  
-  x[1] = 400;
-  y[1] = 100;
-  
-  x[2] = 100;
-  y[2] = 100;
-  
-  x[3] = 100;
-  y[3] = 100;
+  n = 45;
+  x = new int[n];
+  y = new int[n];
+  alive = new boolean[n];
+
+  tempx = 80;
+  tempy = 80;
+  int i = 0;
+  while (i < n) {
+    x[i] = tempx;
+    y[i] = tempy;
+    alive[i] = true;
+    tempx = tempx + 80;
+    if (tempx == width) {
+      tempx = 80;
+      tempy = tempy + 80;
+    }
+
+
+    i = i+1;
+  }
 }
 
 
@@ -70,5 +97,33 @@ void draw() {
   } else {
 
     println("Error: Mode = " + mode);
+  }
+}
+
+
+void tactileRect(int x, int y, int w, int l) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+l) {
+    stroke(255);
+  } else {
+    stroke(0);
+  }
+}
+
+
+
+void tactileCircle(int X, int Y, int r) {
+  if (dist(mouseX, mouseY, X, Y) < r) {
+    stroke(255);
+  } else {
+    stroke(0);
+  }
+}
+
+
+void tactileCircle(float posX, float posY, float r) {
+  if (dist(posX, posY, mouseX, mouseY) < r) {
+    stroke(255);
+  } else {
+    stroke(0);
   }
 }

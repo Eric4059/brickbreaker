@@ -1,15 +1,7 @@
-void pause(){
-
-
-
-
+void pause() {
 }
 
 
 
-void pauseClicks(){
-
-
-
-
+void pauseClicks() {
 }
