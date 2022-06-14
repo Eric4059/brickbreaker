@@ -6,15 +6,19 @@ boolean[] alive;
 int brickd;
 int bd;
 
-
+int score;
 int mode;
+int lives;
+
+String winner;
+
 
 final int INTRO = 1;
 final int GAME = 2;
 final int GAMEOVER = 3;
 final int PAUSE = 4;
 final int OPTIONS = 5;
-final int GAME2 = 6;
+
 
 int n;
 
@@ -34,7 +38,11 @@ void setup() {
   strokeWeight(5);
   textAlign(CENTER, CENTER);
   textSize(60);
-
+  
+  score = 0;
+  
+  lives = 3;
+  
   bd = 20;
 
   bx = 400;
@@ -44,7 +52,7 @@ void setup() {
   py = 800;
 
   vx = random(3, 5);
-  vy = random(1, 5);
+  vy = 5;
 
   brickd = 50;
   n = 45;
