@@ -1,3 +1,10 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //brick variables
 
 int[] x; 
@@ -12,6 +19,15 @@ int lives;
 
 String winner;
 
+color red;
+color blue;
+color green;
+color yellow;
+color orange;
+
+color bColor;
+
+PFont title;
 
 final int INTRO = 1;
 final int GAME = 2;
@@ -21,6 +37,10 @@ final int OPTIONS = 5;
 
 
 int n;
+
+//audio
+Minim minim;
+AudioPlayer intro, pop, game, gameover;
 
 
 float px, py; //paddle
@@ -38,6 +58,31 @@ void setup() {
   strokeWeight(5);
   textAlign(CENTER, CENTER);
   textSize(60);
+  
+  title = createFont("title.ttf", 75);
+  
+  
+  red = #FF0303;
+  blue = #287CCE;
+  green = #48D158;
+  yellow = #FCFF4D;
+  orange = #FC9F08;
+  
+  
+  //audio
+  
+  minim = new Minim(this);
+  
+  pop = minim.loadFile("pop.mp3");
+  
+  intro = minim.loadFile("intro.mp3");
+  
+  gameover = minim.loadFile("gameover.mp3");
+  
+  game = minim.loadFile("game.mp3");
+  
+ 
+  
   
   score = 0;
   

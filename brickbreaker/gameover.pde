@@ -1,10 +1,12 @@
 void gameover() {
   
+  game.pause();
+  gameover.play();
   background(#8243D6);
   
   fill(0);
   textSize(100);
-  text(winner, 400, 300);
+  text(winner, 400, 250);
   
   
   //buttons
@@ -13,15 +15,15 @@ void gameover() {
   fill(255);
   rect(100, 500, 200, 80);
   fill(0);
-  textSize(50);
-  text("Restart", 200, 530);
+  textSize(40);
+  text("Restart", 200, 535);
   
   tactileRect(500, 500, 200, 80);
   fill(255);
   rect(500, 500, 200, 80);
   fill(0);
-  textSize(50);
-  text("Home", 600, 530);
+  textSize(40);
+  text("Home", 600, 535);
 }
 
 
